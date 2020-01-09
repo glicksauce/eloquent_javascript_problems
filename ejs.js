@@ -96,3 +96,26 @@ console.log(deepEqual(obj, obj));
 console.log(deepEqual(obj, {here: 1, object: 2}));
 console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 console.log(deepEqual({here: {is: null}, object: 2}, {here: {is: null}, object: 2}));
+
+//------------------------------------
+//Chapter 5 Exercises
+//Flattening
+//Use the reduce method in combination with the concat method to “flatten” an array of arrays into a single array that has all the elements of the original arrays.
+
+let arrays = [[1, 2, 3, 2, 1], [4, 5], [6]];
+
+const reducer = (accumulator, currentValue, idx, src) => {
+  //console.log(accumulator)
+  return accumulator.concat(currentValue);
+}
+
+const arrFlatten = (arr) => {
+  let returnString = '';
+  //for (let element of arr){;
+    returnString = (arr.reduce(reducer));
+  //}
+  return returnString;
+}
+
+
+console.log(arrFlatten(arrays));
