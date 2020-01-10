@@ -104,8 +104,8 @@ console.log(deepEqual({here: {is: null}, object: 2}, {here: {is: null}, object: 
 
 let arrays = [[1, 2, 3, 2, 1], [4, 5], [6]];
 
+//.recuce has these 4 parameters:
 const reducer = (accumulator, currentValue, idx, src) => {
-  //console.log(accumulator)
   return accumulator.concat(currentValue);
 }
 
@@ -119,3 +119,25 @@ const arrFlatten = (arr) => {
 
 
 console.log(arrFlatten(arrays));
+
+//Your Own Loop
+//Write a higher-order function loop that provides something like a for loop statement. It takes a value, a test function, an update function, and a body function. Each iteration, it first runs the test function on the current loop value and stops if that returns false. Then it calls the body function, giving it the current value. Finally, it calls the update function to create a new value and starts from the beginning.
+
+const loop = (iteration, testFunction, updateFunction, bodyFunction) => {
+  if (!testFunction(iteration)) {
+    return false;
+  }
+
+  while (testFunction(iteration)){
+    bodyFunction(iteration);
+    iteration = updateFunction(iteration)
+  }
+}
+
+
+const testEval = (value) => {
+  console.log(value, func);
+}
+
+loop(3, n => n > 0, n => n -1, console.log)
+loop(10, n => n > 0, n => n -2, console.log)
